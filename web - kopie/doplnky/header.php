@@ -1,13 +1,13 @@
 <?php
-
+if (!isset($_SESSION['jmeno'])) {
+    header("Location: login.php");
+}
 if (isset($_GET['logout'])) {
     session_destroy();
     unset($_SESSION['jmeno']);
     header("location: login.php");
 }
-if (!isset($_SESSION['jmeno'])) {
-    header("location: login.php");
-}
+
 ?>
 <header>
     <div class="default-header">

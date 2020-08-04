@@ -50,7 +50,7 @@ include('server.php');
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane active" id="resentnewcar">
 
-						<?php $sql = "SELECT NazevAkce, MístoAkce, Cena, DatumStartu, DatumKonce from akce limit 6";
+						<?php $sql = "SELECT NazevAkce, MistoAkce, Cena, DatumStartu, DatumKonce from akce limit 6";
 						$db = kmenDB();
 						$result = mysqli_query($db, $sql);
 						$resultCheck = mysqli_num_rows($result);
@@ -59,10 +59,10 @@ include('server.php');
 						?>
 					
 								<div class="col-list-3">
-									<a <?php echo $row['NazevAkce']; ?>></a><img src="img/<?php echo $row['MístoAkce']; ?>.jpg" height="150" width="300">
+									<a <?php echo $row['NazevAkce']; ?>></a><img src="img/<?php echo $row['MistoAkce']; ?>.jpg" height="150" width="300">
 									<ul>
 										<li>Název akce: <?php echo  $row['NazevAkce']; ?></li>
-										<li>Místo akce: <?php echo $row['MístoAkce']; ?></li>
+										<li>Místo akce: <?php echo $row['MistoAkce']; ?></li>
 										<li>Cena: <?php echo $row['Cena']; ?> Kč</li>
 										<li>Datum startu: <?php echo $row['DatumStartu']; ?> </li>
 										<li>Datum Konce: <?php echo $row['DatumKonce']; ?></li>

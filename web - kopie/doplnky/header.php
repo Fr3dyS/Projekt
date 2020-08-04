@@ -19,7 +19,7 @@ if (!isset($_SESSION['jmeno'])) {
                 <div class="col-sm-9 col-md-10">
                     <div class="header_info">
                         <?php
-                        $db = new mysqli("localhost", "root", '', "projekt");
+                        $db = new mysqli("localhost", "root", '', "pololetka");
                         $sql = "SELECT * FROM kontakt;";
                         $result = mysqli_query($db, $sql);
                         $resultCheck = mysqli_num_rows($result);

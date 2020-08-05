@@ -8,7 +8,14 @@
                         <li><a href="Onas.php">O nás</a></li>
                         <li><a href="FAQs.php">FAQs</a></li>
                         <li><a href="vkladAkci.php">Vklad Akci</a></li>
-                        <li><a href="delete.php">Mazani Akci</a></li>
+                        <?php
+                        if ($_SESSION['jmeno'] == "admin") {
+                        ?>
+                            <li><a href="delete.php">Mazani Akci</a></li>
+                        <?php
+                        }
+                        ?>
+
                     </ul>
                 </div>
 
@@ -38,4 +45,4 @@
             </div>
         </div>
     </div>
-</footer>   
+</footer>

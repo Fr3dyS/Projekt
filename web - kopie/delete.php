@@ -1,5 +1,9 @@
 <?php
 include('OOP/delete.php');
+if (isset($_POST['delete'])) {
+	$delete = new Delete();
+	$delete->deleteAkce($_POST['id']);
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -30,9 +34,6 @@ include('OOP/delete.php');
 		<div class="form-group">
 			<input type="number" class="form-control" name="id" placeholder="Vloz id">
 		</div>
-		<div class="form-group">
-			<input type="text" class="form-control" name="nazev" placeholder="Vloz nazev akce pro kontrolu">
-		</div>
 		<div class="form-group checkbox">
 			<input type="checkbox" id="remember">
 
@@ -42,10 +43,7 @@ include('OOP/delete.php');
 		</div>
 	</form>
 	<?php
-	if(isset($_POST['delete'])){
-		$delete = new Delete();
-		$delete->deleteAkce($_POST['id'], $_POST['nazev']);
-	}
+
 	include('doplnky/footer.php');
 	?>
 </body>

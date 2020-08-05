@@ -30,6 +30,14 @@ include('server.php');
 	<section class="section-padding gray-bg">
 		<div class="container">
 			<div class="section-header text-center">
+				<h1>
+					<?php
+					if (isset($_SESSION['uspech'])) {
+						echo $_SESSION['uspech'];
+						unset($_SESSION['uspech']);
+					}
+					?>
+				</h1>
 				<h2>Úvod o <span>Plánu akcí</span></h2>
 				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Pellentesque ipsum. Pellentesque pretium lectus id turpis. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 				<p>In dapibus augue non sapien. Etiam commodo dui eget wisi. Morbi leo mi, nonummy eget tristique non, rhoncus non leo. Curabitur ligula sapien, pulvinar a vestibulum quis, facilisis vel sapien. Praesent dapibus. Morbi scelerisque luctus velit.</p>
@@ -50,17 +58,24 @@ include('server.php');
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane active" id="resentnewcar">
 
-						<?php $sql = "SELECT NazevAkce, MistoAkce, Cena, DatumStartu, DatumKonce from akce limit 6";
+						<?php $sql = "SELECT * from akce limit 6";
 						$db = kmenDB();
 						$result = mysqli_query($db, $sql);
 						$resultCheck = mysqli_num_rows($result);
 						if ($resultCheck > 0) {
 							while ($row = mysqli_fetch_assoc($result)) {
 						?>
-					
+
 								<div class="col-list-3">
 									<a <?php echo $row['NazevAkce']; ?>></a><img src="img/<?php echo $row['MistoAkce']; ?>.jpg" height="150" width="300">
 									<ul>
+										<?php
+										if ($_SESSION['jmeno'] == "admin") {
+										?>
+											<li>Id akce: <?php echo  $row['id']; ?></li>
+										<?php
+										}
+										?>
 										<li>Název akce: <?php echo  $row['NazevAkce']; ?></li>
 										<li>Místo akce: <?php echo $row['MistoAkce']; ?></li>
 										<li>Cena: <?php echo $row['Cena']; ?> Kč</li>

@@ -1,5 +1,4 @@
 <?php
-session_start();
 include('./server.php');
 class PridavaniAkci
 {
@@ -14,6 +13,7 @@ class PridavaniAkci
 
         $akce = "INSERT INTO akce (Id, NazevAkce, MistoAkce, Cena, DatumStartu, DatumKonce) VALUES(null,'$nazevAkce','$mistoKonani', '$cena', '$datumStartu', '$datumKonce')";
         mysqli_query($db, $akce);
+        header('Location: index.php');
         $_SESSION['uspech'] = "Právě si úspěšně vložil akci do databaze";
     }
 }

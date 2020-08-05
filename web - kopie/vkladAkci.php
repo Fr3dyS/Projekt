@@ -1,5 +1,9 @@
 <?php
 include('OOP/pridavaniAkci.php');
+if (isset($_POST['vkladAkci'])) {
+    $pridani = new PridavaniAkci();
+    $pridani->pridavaniAkciDoDB($_POST['nazev'], $_POST['Misto'], $_POST['Cena'], $_POST['DatumStartu'], $_POST['DatumKonce']);
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -30,31 +34,25 @@ include('OOP/pridavaniAkci.php');
             <form method="post" id="fg" action="">
                 <div class="form-group">
                     <h1><b>Vklad akcí</b></h1>
-                    <input type="text" class="form-control" placeholder="Název" name="nazev" require="true">
+                    <input type="text" class="form-control" placeholder="Název" name="nazev" required="required">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Místo" name="Misto" require="true">
+                    <input type="text" class="form-control" placeholder="Místo" name="Misto" required="required">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Cena" name="Cena" require="true">
+                    <input type="text" class="form-control" placeholder="Cena" name="Cena" required="required">
                 </div>
                 <div class="form-group">
-                    <input type="date" class="form-control" placeholder="Datum startu" name="DatumStartu" require="true">
+                    <input type="date" class="form-control" placeholder="Datum startu" name="DatumStartu" required="required">
                 </div>
                 <div class="form-group">
-                    <input type="date" class="form-control" placeholder="Datum konce" name="DatumKonce" require="true">
+                    <input type="date" class="form-control" placeholder="Datum konce" name="DatumKonce" required="required">
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn" name="vkladAkci">Vlak akce</button>
+                    <button type="submit" class="btn" name="vkladAkci">Vklad akce</button>
                 </div>
             </form>
-            <?php
-            if(isset($_POST['vkladAkci'])){
-                $pridani = new PridavaniAkci();
-                $pridani->pridavaniAkciDoDB($_POST['nazev'], $_POST['Misto'], $_POST['Cena'], $_POST['DatumStartu'], $_POST['DatumKonce']);
 
-            }
-      ?>
         </div>
         <?php
 

@@ -1,5 +1,9 @@
 <?php
 include('oop/login.php');
+if (isset($_POST['login'])) {
+	$login = new LoginRegistrace();
+	$login->loginUzivatele($_POST['jmeno'], md5($_POST['heslo']));
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -27,7 +31,7 @@ include('oop/login.php');
 		<h4><b>Přihlaš se přes jméno: admin </b></h4>
 		<h4><b>a heslo: admin </b></h4>
 		<div class="form-group">
-			<input type="text" class="form-control"  name="jmeno" placeholder="Vloz jmeno">
+			<input type="text" class="form-control" name="jmeno" placeholder="Vloz jmeno">
 		</div>
 		<div class="form-group">
 			<input type="password" class="form-control" name="heslo" placeholder="Vloz heslo">
@@ -43,12 +47,7 @@ include('oop/login.php');
 			Nemáš ještě účet? <a href="registrace.php">zaregistruj se</a>
 		</p>
 	</form>
-	<?php
-	if(isset($_POST['login'])){
-		$login = new LoginRegistrace();
-		$login->loginUzivatele($_POST['jmeno'], md5($_POST['heslo']));
-	}
-	?>
+
 	<script>
 		$("#fg").validate({
 			rules: {

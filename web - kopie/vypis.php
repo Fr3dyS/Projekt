@@ -17,7 +17,7 @@ include('server.php');
 	<link href="css/font-awesome.min.css" rel="stylesheet">
 	<link rel="icon" href="img/icon.png">
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://kit.fontawesome.com/a3c8e90cb0.js" crossorigin="anonymous"></script>
 	<style>
 	</style>
 </head>
@@ -35,6 +35,7 @@ include('server.php');
 				<p>In dapibus augue non sapien. Etiam commodo dui eget wisi. Morbi leo mi, nonummy eget tristique non, rhoncus non leo. Curabitur ligula sapien, pulvinar a vestibulum quis, facilisis vel sapien. Praesent dapibus. Morbi scelerisque luctus velit.</p>
 				<p> Praesent id justo in neque elementum ultrices. Integer imperdiet lectus quis justo. Integer pellentesque quam vel velit. Mauris suscipit, ligula sit amet pharetra semper, nibh ante cursus purus, vel sagittis velit mauris vel metus.</p>
 				<p>Formát datum akcí YYYY-MM-DD</p>
+
 			</div>
 		</div>
 		<div class="container">
@@ -43,7 +44,7 @@ include('server.php');
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane active" id="resentnewcar">
 
-						<?php $sql = "SELECT NazevAkce, MistoAkce, Cena, DatumStartu, DatumKonce from akce ";
+						<?php $sql = "SELECT * from akce ";
 						$db = kmenDB();
 						$result = mysqli_query($db, $sql);
 						$resultCheck = mysqli_num_rows($result);
@@ -51,8 +52,15 @@ include('server.php');
 							while ($row = mysqli_fetch_assoc($result)) {
 						?>
 								<div class="col-list-3">
-									<a <?php echo $row['NazevAkce']; ?>></a><img src="img/<?php echo $row['MistoAkce']; ?>.jpg" height="150" width="300">
+									<img src="img/<?php echo $row['MistoAkce']; ?>.jpg" height="150" width="300">
 									<ul>
+										<?php
+										if ($_SESSION['jmeno'] == "admin") {
+										?>
+											<li>Id akce: <?php echo  $row['id']; ?></li>
+										<?php
+										}
+										?>
 										<li>Název akce: <?php echo  $row['NazevAkce']; ?></li>
 										<li>Místo akce: <?php echo $row['MistoAkce']; ?></li>
 										<li>Cena: <?php echo $row['Cena']; ?> Kč</li>

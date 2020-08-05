@@ -12,7 +12,7 @@ class LoginRegistrace
         $results = mysqli_query($db, $query);
         if (mysqli_num_rows($results) == 1) {
             $_SESSION['jmeno'] = $jmeno;
-            $_SESSION['potvrzeno'] = "Právě si se úspěšně přihlásil";
+            $_SESSION['uspech'] = "Právě si se úspěšně přihlásil";
             header('location: index.php');
         } 
     }
@@ -49,6 +49,7 @@ class LoginRegistrace
             mysqli_query($db, $query);
             $_SESSION['jmeno'] = $jmeno;
             $_SESSION['uspech'] = "Právě si se úspěšně zaregistroval ";
+            header('location: index.php');
         }
     }
 }
